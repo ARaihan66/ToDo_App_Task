@@ -1,9 +1,10 @@
-import Image from "next/image";
+import Todo from "./components/Todo";
+
 
 export default function Home() {
   return (
    <div>
-    <h1>Hello World</h1>
+    <Todo/>
    </div>
    
   );
