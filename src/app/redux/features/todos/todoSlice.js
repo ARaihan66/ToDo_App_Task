@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from 'uuid';
 
 // Retrieve todo items from localStorage if available
 const items = typeof window !== 'undefined' && localStorage.getItem("todoItems") !== null
@@ -14,7 +15,8 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     addToDo: (state, action) => {
-      state.todo.push(action.payload);
+      const newTodo = {...action.payload, id: uuidv4()}
+      state.todo.push(newTodo);
       localStorage.setItem("todoItems", JSON.stringify(state.todo));
     },
     removeToDo: (state, action) => {
