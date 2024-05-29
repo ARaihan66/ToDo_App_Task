@@ -1,7 +1,9 @@
 import React from 'react'
 import { MdEditDocument, MdDelete} from "react-icons/md";
+import { useAppSelector } from '../redux/hooks';
 
 const Todo = () => {
+    const todoItems = useAppSelector((state)=> console.log(state))
   return (
     <div className='w-[50%] m-auto p-[10px] my-[20px] bg-gray-100 rounded-xl shadow-xl'>
         <h1 className='text-center text-2xl font-bold my-[20px]'>ToDo List</h1>
