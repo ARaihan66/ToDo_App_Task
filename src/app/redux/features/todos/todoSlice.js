@@ -21,9 +21,10 @@ export const todoSlice = createSlice({
     },
 
     removeToDo: (state, action) => {
-      state.todo = state.todo.filter((item) => item.id !== action.payload.id);
+      state.todo = state.todo.filter((item) => item.id !== action.payload);
       localStorage.setItem("todoItems", JSON.stringify(state.todo));
     },
+    
     editToDo: (state, action) => {
       const { id, newText } = action.payload;
       const itemIndex = state.todo.findIndex((item) => item.id === id);
