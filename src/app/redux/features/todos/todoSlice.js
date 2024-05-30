@@ -15,7 +15,11 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     addToDo: (state, action) => {
-      const newTodo = { text: action.payload, id: uuidv4() };
+      const newTodo = { 
+        title: action.payload.inputTitle, 
+        description: action.payload.inputDescription, 
+        id: uuidv4() 
+      };
       state.todo.push(newTodo); 
       localStorage.setItem("todoItems", JSON.stringify(state.todo)); 
     },
@@ -26,15 +30,16 @@ export const todoSlice = createSlice({
     },
 
     editToDo: (state, action) => {
-      const { id, newText } = action.payload;
+      const { id, newTitle, newDescription } = action.payload;
       const itemIndex = state.todo.findIndex((item) => item.id === id);
       if (itemIndex !== -1) {
-        state.todo[itemIndex].text = newText;
+        state.todo[itemIndex].title = newTitle;
+        state.todo[itemIndex].description = newDescription;
       }
       localStorage.setItem("todoItems", JSON.stringify(state.todo));
     },
 
-    clearToDo: (state, action) => {
+    clearToDo: (state) => {
       state.todo = [];
       localStorage.setItem("todoItems", JSON.stringify(state.todo));
     },
