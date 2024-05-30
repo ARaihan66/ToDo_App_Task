@@ -71,3 +71,11 @@ yarn dev
 4. Clear All Tasks: Click the "Clear All Items" button to remove all tasks.
 
 5. Pagination: Use the "Previous" and "Next" buttons to navigate through the pages if there are more than 3 tasks.
+
+### Deployment on Vercel
+ 
+1. Go to Vercel and register (if you do not have an account).
+2. After logging into Vercel, create a new project.
+3. Import your Git repository into Vercel. Vercel will automatically detect the project settings and deploy your application.
+4. Follow the prompts to complete the deployment process. 
+5. Once the deployment is complete, Vercel will provide you with a live URL for your application.
