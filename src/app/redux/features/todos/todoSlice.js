@@ -15,10 +15,11 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     addToDo: (state, action) => {
-      const newTodo = {...action.payload, id: uuidv4()}
-      state.todo.push(newTodo);
-      localStorage.setItem("todoItems", JSON.stringify(state.todo));
+      const newTodo = { text: action.payload, id: uuidv4() };
+      state.todo.push(newTodo); 
+      localStorage.setItem("todoItems", JSON.stringify(state.todo)); 
     },
+
     removeToDo: (state, action) => {
       state.todo = state.todo.filter((item) => item.id !== action.payload.id);
       localStorage.setItem("todoItems", JSON.stringify(state.todo));
