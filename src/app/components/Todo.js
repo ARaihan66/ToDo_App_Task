@@ -100,11 +100,11 @@ const Todo = () => {
         ))}
       </div>
       
-      {todoItems.length > 0 && (
+      {todoItems.length > 1 && (
         <>
           <div className="text-center my-[20px]">
             <button onClick={handleClearAll} className="bg-red-300 p-[10px] rounded-xl">
-              Clear All Items
+              Clear All Tasks
             </button>
           </div>
           <div className="flex justify-center items-center gap-4">
