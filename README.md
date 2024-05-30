@@ -12,11 +12,12 @@ A simple Todo List application built with Next JS, Redux Toolkit, and Tailwind C
 
 ## Technologies Used
 
-- Next JS
-- Redux Toolkit
-- Tailwind CSS
-- React Icons
-- React Hot Toast
+- Next.js
+- Redux Toolkit for state management
+- Tailwind CSS for styling
+- Browser Local Storage for data persistence
+- React Icons for icons
+- React Hot Toast for notifications
 
 ## Getting Started
 
