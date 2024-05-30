@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { MdEditDocument, MdDelete } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { addToDo, editToDo, removeToDo } from "../redux/features/todos/todoSlice";
+import { addToDo, editToDo, removeToDo,clearToDo } from "../redux/features/todos/todoSlice";
 import toast, { Toaster } from "react-hot-toast";
 
 const Todo = () => {
@@ -43,7 +43,7 @@ const Todo = () => {
   };
 
   const handleClearTodo = ()=>{
-    
+  dispatch( clearToDo());
   }
 
   if (!hydrated) {
