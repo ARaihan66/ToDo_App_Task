@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Todo List Application
+
+A simple Todo List application built with Next JS, Redux Toolkit, and Tailwind CSS. This app allows users to add, edit, delete, and clear todo tasks, with pagination to navigate through tasks when there are more than three.
+
+## Features
+
+- Add new todo items with a title and description.
+- Edit existing todo items.
+- Delete individual todo items.
+- Clear all todo items.
+- Paginate through todo items (3 items per page).
+
+## Technologies Used
+
+- Next JS
+- Redux Toolkit
+- Tailwind CSS
+- React Icons
+- React Hot Toast
 
 ## Getting Started
 
-First, run the development server:
+Follow these instructions to set up and run the project locally.
 
-```bash
+### Prerequisites
+
+- Node.js
+- npm (or yarn)
+
+### Installation
+
+1. Clone the repository:
+
+    ```sh
+    git clone https://github.com/yourusername/todo-app.git
+    ```
+
+2. Navigate to the project directory:
+
+    ```sh
+    cd ToDo_App
+    ```
+
+3. Install the dependencies:
+
+    ```sh
+    npm install
+    # or
+    yarn install
+    ```
+
+### Running the Application
+
+To start the development server, run:
+
+```sh
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Usage
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Add a Task:  Enter a task title and description, then click the "Add Task" button.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Edit a Task: Click the edit icon next to a task, modify the title and/or description, and save the changes.
 
-## Learn More
+3. Delete a Task: Click the delete icon to delete a task.
 
-To learn more about Next.js, take a look at the following resources:
+4. Clear All Tasks: Click the "Clear All Items" button to remove all tasks.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Pagination: Use the "Previous" and "Next" buttons to navigate through the pages if there are more than 3 tasks.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Deployment on Vercel
+ 
+1. Go to Vercel and register (if you do not have an account).
 
-## Deploy on Vercel
+2. After logging into Vercel, create a new project.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Import your Git repository into Vercel. Vercel will automatically detect the project settings and deploy your application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. Follow the prompts to complete the deployment process. 
+
+5. Once the deployment is complete, Vercel will provide you with a live URL for your application.
