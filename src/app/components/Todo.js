@@ -10,6 +10,9 @@ const Todo = () => {
   const [inputDescription, setInputDescription] = useState("");
   const [editId, setEditId] = useState(null);
   const [hydrated, setHydrated] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3;
+
   const todoItems = useAppSelector((state) => state.todo.todo);
   const dispatch = useAppDispatch();
 
@@ -22,7 +25,7 @@ const Todo = () => {
       if (editId) {
         dispatch(editToDo({ id: editId, newTitle: inputTitle, newDescription: inputDescription }));
         toast.success("Task edited successfully");
-        setEditId(null); // Clear the edit state
+        setEditId(null);
       } else {
         dispatch(addToDo({ inputTitle, inputDescription }));
         toast.success("New task added");
@@ -47,8 +50,12 @@ const Todo = () => {
 
   const handleClearAll = () => {
     dispatch(clearToDo());
-    toast.success("All items cleared");
+    toast.success("All Task cleared");
   };
+
+  // Pagination logic
+  const totalPages = Math.ceil(todoItems.length / itemsPerPage);
+  const currentItems = todoItems.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   if (!hydrated) {
     return null;
@@ -81,27 +88,47 @@ const Todo = () => {
       </div>
 
       <div className="my-[50px] mx-[110px]">
-        {todoItems.length > 0 ?
-          todoItems.map((item) => (
-            <div key={item.id} className="flex flex-col justify-between items-center my-[30px] p-[10px] bg-white rounded-xl shadow-xl">
-              <h3 className="text-l font-bold">{item.title}</h3>
-              <p className="text-justify my-[10px]">{item.description}</p>
-              <div className="flex gap-8">
-                <MdEditDocument onClick={() => handleEditTodo(item)} className="cursor-pointer text-2xl" />
-                <MdDelete onClick={() => handleDeleteTodo(item.id)} className="cursor-pointer text-red-600 text-2xl" />
-              </div>
+        {currentItems.map((item) => (
+          <div key={item.id} className="flex flex-col justify-between items-center my-[30px] p-[10px] bg-white rounded-xl shadow-xl">
+            <h3 className="text-l font-bold">{item.title}</h3>
+            <p className="text-justify my-[10px]">{item.description}</p>
+            <div className="flex gap-8">
+              <MdEditDocument onClick={() => handleEditTodo(item)} className="cursor-pointer text-2xl" />
+              <MdDelete onClick={() => handleDeleteTodo(item.id)} className="cursor-pointer text-red-600 text-2xl" />
             </div>
-          )) : <h2 className="text-center p-[20px] text-2xl font-bold">Empty List</h2>}
+          </div>
+        ))}
       </div>
-      {todoItems.length > 1 && (
-        <div className="text-center my-[20px]">
-          <button onClick={handleClearAll} className="bg-red-300 p-[10px] rounded-xl">
-            Clear All Items
-          </button>
-        </div>
+      
+      {todoItems.length > 0 && (
+        <>
+          <div className="text-center my-[20px]">
+            <button onClick={handleClearAll} className="bg-red-300 p-[10px] rounded-xl">
+              Clear All Items
+            </button>
+          </div>
+          <div className="flex justify-center items-center gap-4">
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className="bg-gray-300 p-[10px] rounded-xl"
+            >
+              Previous
+            </button>
+            <span>{`Page ${currentPage} of ${totalPages}`}</span>
+            <button
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className="bg-gray-300 p-[10px] rounded-xl"
+            >
+              Next
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
 };
 
 export default Todo;
+
