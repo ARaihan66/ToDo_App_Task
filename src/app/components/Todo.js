@@ -42,6 +42,10 @@ const Todo = () => {
     setEditId(item.id);
   };
 
+  const handleClearTodo = ()=>{
+    
+  }
+
   if (!hydrated) {
     return null; 
   }
@@ -79,7 +83,7 @@ const Todo = () => {
           ))}
       </div>
       <div className="text-center my-[20px]">
-        <button className="bg-red-300 p-[10px] rounded-xl">
+        <button onClick={handleClearTodo} className="bg-red-300 p-[10px] rounded-xl">
           Clear All Items
         </button>
       </div>

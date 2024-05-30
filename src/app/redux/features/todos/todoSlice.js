@@ -24,13 +24,18 @@ export const todoSlice = createSlice({
       state.todo = state.todo.filter((item) => item.id !== action.payload);
       localStorage.setItem("todoItems", JSON.stringify(state.todo));
     },
-    
+
     editToDo: (state, action) => {
       const { id, newText } = action.payload;
       const itemIndex = state.todo.findIndex((item) => item.id === id);
       if (itemIndex !== -1) {
         state.todo[itemIndex].text = newText;
       }
+      localStorage.setItem("todoItems", JSON.stringify(state.todo));
+    },
+
+    clearToDo: (state, action) => {
+      state.todo = [];
       localStorage.setItem("todoItems", JSON.stringify(state.todo));
     },
   },
